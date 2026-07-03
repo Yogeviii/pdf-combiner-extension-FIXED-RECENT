@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Commbox Conversation PDF Downloader",
+  "version": "1.0.0",
+  "description": "Click the extension, then click one PDF/message in a Commbox conversation to download all PDFs from that same conversation.",
+  "permissions": ["downloads", "activeTab", "scripting", "tabs"],
+  "host_permissions": ["https://davidshield.commbox.io/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://davidshield.commbox.io/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Pick Commbox conversation PDF"
+  }
+}
