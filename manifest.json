@@ -1,21 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "Commbox Conversation PDF Downloader",
+  "name": "Local PDF Combiner",
   "version": "1.0.0",
-  "description": "Click the extension, then click one PDF/message in a Commbox conversation to download all PDFs from that same conversation.",
-  "permissions": ["downloads", "activeTab", "scripting", "tabs"],
-  "host_permissions": ["https://davidshield.commbox.io/*"],
+  "description": "Combine JPG, JPEG, PNG, WebP, GIF, BMP, AVIF and PDF files into one local PDF.",
+  "action": {
+    "default_title": "Open PDF Combiner"
+  },
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [
-    {
-      "matches": ["https://davidshield.commbox.io/*"],
-      "js": ["content.js"],
-      "run_at": "document_idle"
-    }
-  ],
-  "action": {
-    "default_title": "Pick Commbox conversation PDF"
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   }
 }

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local PDF Combiner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Chrome extension · local-only processing</p>
+        <h1>Combine images and PDFs into one PDF</h1>
+        <p class="subtitle">Add files, reorder them, and export a single PDF. Your files stay inside the browser.</p>
+      </div>
+      <div class="status-card" id="engineStatus">Checking PDF engine…</div>
+    </section>
+
+    <section class="panel dropzone" id="dropzone">
+      <input id="fileInput" type="file" multiple accept=".pdf,image/*,.jpg,.jpeg,.png,.webp,.gif,.bmp,.avif" />
+      <div class="drop-inner">
+        <div class="drop-icon">PDF</div>
+        <div>
+          <h2>Drop files here</h2>
+          <p>or click to select JPG, JPEG, PNG, WebP, GIF, BMP, AVIF, and PDF files.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel options-grid">
+      <label>
+        Output file name
+        <input id="outputName" type="text" value="combined.pdf" />
+      </label>
+      <label>
+        Image page size
+        <select id="pageSize">
+          <option value="a4" selected>A4 portrait</option>
+          <option value="letter">US Letter portrait</option>
+          <option value="image">Use image size</option>
+        </select>
+      </label>
+      <label>
+        Margin for image pages
+        <select id="marginSize">
+          <option value="0">0 mm</option>
+          <option value="10" selected>10 mm</option>
+          <option value="20">20 mm</option>
+        </select>
+      </label>
+      <label>
+        JPEG quality
+        <select id="jpegQuality">
+          <option value="0.82">Smaller file</option>
+          <option value="0.92" selected>Balanced</option>
+          <option value="0.98">High quality</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="panel file-panel">
+      <div class="file-toolbar">
+        <h2>Files</h2>
+        <div class="toolbar-actions">
+          <button id="sortNameBtn" type="button">Sort A-Z</button>
+          <button id="clearBtn" type="button" class="danger-light">Clear</button>
+        </div>
+      </div>
+      <ol id="fileList" class="file-list"></ol>
+      <p id="emptyState" class="empty-state">No files selected yet.</p>
+    </section>
+
+    <section class="actions">
+      <button id="mergeBtn" class="primary" type="button">Create merged PDF</button>
+      <button id="demoBtn" type="button">Add test page</button>
+    </section>
+
+    <section id="log" class="log" aria-live="polite"></section>
+  </main>
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
